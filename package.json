@@ -25,10 +25,12 @@
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
     "style:check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
     "style:fix": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
-    "test": "yarn test:functional",
+    "test": "yarn test:unit && yarn test:functional",
+    "test:unit": "jest",
     "test:functional": "jest --projects ./test --runInBand"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.0.1",
     "@types/module-alias": "^2.0.1",
@@ -46,6 +48,7 @@
   },
   "dependencies": {
     "@overnightjs/core": "^1.7.6",
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "module-alias": "^2.2.2"
   }
