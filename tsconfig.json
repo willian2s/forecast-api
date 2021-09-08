@@ -17,6 +17,7 @@
     "noImplicitReturns": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "useUnknownInCatchVariables": false,
     "baseUrl": ".",
     "paths": {
       "@src/*": ["./src/*"],
