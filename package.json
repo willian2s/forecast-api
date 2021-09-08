@@ -1,9 +1,9 @@
 {
-  "name": "best-surf-api",
+  "name": "forecast-api",
   "version": "1.0.0",
   "description": "Api of the surf meteorology application using StormGlass service",
   "main": "index.js",
-  "repository": "git@github.com:willian2s/best-surf-api.git",
+  "repository": "git@github.com:willian2s/forecast-api.git",
   "author": "Willian Silva <silva.williansantos@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -14,9 +14,9 @@
     "stormglass"
   ],
   "bugs": {
-    "url": "https://github.com/willian2s/best-surf-api/issues"
+    "url": "https://github.com/willian2s/forecast-api/issues"
   },
-  "homepage": "https://github.com/willian2s/best-surf-api#readme",
+  "homepage": "https://github.com/willian2s/forecast-api#readme",
   "scripts": {
     "build": "tsc",
     "start": "yarn build && node dist/src/index.js",
@@ -25,10 +25,14 @@
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
     "style:check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
     "style:fix": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
-    "test": "yarn test:functional",
-    "test:functional": "jest --projects ./test --runInBand"
+    "test": "yarn test:unit && yarn test:functional",
+    "test:unit": "jest",
+    "test:functional": "jest --projects ./test --runInBand",
+    "test:cov": "jest --coverage"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/config": "^0.0.39",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.0.1",
     "@types/module-alias": "^2.0.1",
@@ -46,6 +50,9 @@
   },
   "dependencies": {
     "@overnightjs/core": "^1.7.6",
+    "axios": "^0.21.1",
+    "config": "^3.3.6",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "module-alias": "^2.2.2"
   }
