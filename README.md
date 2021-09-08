@@ -29,7 +29,7 @@
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-how-to-test">How to test</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#How-to-contribute">How to contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#how-to-contribute">How to contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-license">License</a>
 </p>
 
@@ -65,7 +65,7 @@ This API was developed to obtain the forecast of the beaches where you want to s
 - Start server: `yarn start`; or
 - Start development server: `yarn start:dev`
 
-## 🤔 How to contribute
+## How to contribute
 
 Follow the instructions in [Contributing](CONTRIBUTING.md)
 
