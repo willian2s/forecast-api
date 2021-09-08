@@ -26,16 +26,16 @@
 </p>
 
 <p align="center">
-  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-how-to-test">How to test</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#how-to-test">How to test</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#how-to-contribute">How to contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-license">License</a>
+  <a href="#license">License</a>
 </p>
 
 <br>
 
-## :rocket: Technologies
+## Technologies
 
 This project was developed with the following technologies:
 
@@ -55,7 +55,7 @@ This project was developed with the following technologies:
 
 This API was developed to obtain the forecast of the beaches where you want to surf. Being able to give your rating for each visited beach.
 
-## :rocket: How to test
+## How to test
 
 - Clone the repository: `git clone https://github.com/willian2s/vuttr.git`
 - Install dependencies: `yarn install`
@@ -69,7 +69,7 @@ This API was developed to obtain the forecast of the beaches where you want to s
 
 Follow the instructions in [Contributing](CONTRIBUTING.md)
 
-## :memo: License
+## License
 
 This project is under the MIT license. See the [LICENSE](LICENSE.md) file for more details.
 
