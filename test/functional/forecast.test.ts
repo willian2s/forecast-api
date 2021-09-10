@@ -1,4 +1,4 @@
-describe('Beach forecast functional tests', () => {
+describe('Forecast functional tests', () => {
   it('Return a forecast with just a few time', async () => {
     const { body, status } = await global.testRequest.get('/forecast');
     expect(status).toBe(200);
