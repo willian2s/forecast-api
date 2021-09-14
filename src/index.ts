@@ -1,5 +1,8 @@
-import config, { IConfig } from 'config';
+import config from 'config';
+import { SetupServer } from './server';
 
-const dbConfig: IConfig = config.get('App.database');
-
-console.log('test', dbConfig.get('mongoUrl'));
+(async (): Promise<void> => {
+  const server = new SetupServer(config.get('App.port'));
+  await server.init();
+  server.start();
+})();
