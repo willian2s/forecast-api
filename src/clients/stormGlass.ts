@@ -32,6 +32,12 @@ export interface ForecastPoint {
   windSpeed: number;
 }
 
+export class StormGlassUnexpectedResponseError extends InternalError {
+  constructor(message: string) {
+    super(message);
+  }
+}
+
 export class ClientRequestError extends InternalError {
   constructor(message: string) {
     const internalMessage = `Unexpected error when trying to communicate to StormGlass`;
@@ -60,18 +66,18 @@ export class StormGlass {
   public async fetchPoints(lat: number, lng: number): Promise<ForecastPoint[]> {
     try {
       const response = await this.request.get<StormGlassForecastResponse>(
-        `${stormGlassResourceConfig.get('apiUrl')}/weather/point?params=${
+        `${stormGlassResourceConfig.get(
+          'apiUrl'
+        )}/weather/point?lat=${lat}&lng=${lng}&params=${
           this.stormGlassAPIParams
-        }&source=${
-          this.stormGlassAPISource
-        }&end=1592113802&lat=${lat}&lng${lng}`,
+        }&source=${this.stormGlassAPISource}`,
         {
           headers: {
-            Authorization: `${stormGlassResourceConfig.get('apiToken')}`,
+            Authorization: stormGlassResourceConfig.get('apiToken'),
           },
         }
       );
-      return this.nomalizedResponse(response.data);
+      return this.normalizeResponse(response.data);
     } catch (err) {
       if (HTTPUtil.Request.isRequestError(err)) {
         throw new StormGlassResponseError(
@@ -84,7 +90,7 @@ export class StormGlass {
     }
   }
 
-  private nomalizedResponse(
+  private normalizeResponse(
     points: StormGlassForecastResponse
   ): ForecastPoint[] {
     return points.hours.filter(this.isValidPoint.bind(this)).map((point) => ({
