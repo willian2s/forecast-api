@@ -1,0 +1,15 @@
+{
+  "App": {
+    "database": {
+      "mongoUrl": "mongodb://localhost:27017/forecast-test"
+    },
+    "resources": {
+      "StormGlass": {
+        "apiToken": "test-token"
+      }
+    },
+    "logger": {
+      "enabled": false
+    }
+  }
+}

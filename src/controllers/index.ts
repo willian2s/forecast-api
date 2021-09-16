@@ -1,3 +1,4 @@
+import logger from '@src/logger';
 import { Response } from 'express';
 import mongoose from 'mongoose';
 
@@ -9,6 +10,7 @@ export abstract class BaseController {
     if (error instanceof mongoose.Error.ValidationError) {
       res.status(422).send({ code: 422, error: error.message });
     } else {
+      logger.error(error);
       res.status(500).send({ code: 500, error: 'Something went wrong!' });
     }
   }

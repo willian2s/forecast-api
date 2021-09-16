@@ -1,0 +1,22 @@
+{
+  "App": {
+    "port": 3000,
+    "database": {
+      "mongoUrl": "mongodb://localhost:27017/forecast"
+    },
+    "auth": {
+      "key": "some-key",
+      "tokenExpiresIn": "20000000"
+    },
+    "resources": {
+      "StormGlass": {
+        "apiUrl": "https://api.stormglass.io/v2",
+        "apiToken": "9066f01a-f8e1-11ea-8b4e-0242ac130002-9066f16e-f8e1-11ea-8b4e-0242ac130002"
+      }
+    },
+    "logger": {
+      "enabled": true,
+      "level": "info"
+    }
+  }
+}
