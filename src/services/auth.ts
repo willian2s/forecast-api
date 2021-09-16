@@ -6,6 +6,10 @@ import { User } from '@src/models/user';
 const tokenKey: string = config.get('App.auth.key');
 const tokenExpiresIn: number = config.get('App.auth.tokenExpiresIn');
 
+export interface DecodedUser extends Omit<User, '_id'> {
+  id: string;
+}
+
 export default class AuthService {
   public static async hashPassword(
     password: string,
@@ -25,5 +29,9 @@ export default class AuthService {
     return jwt.sign(payload, tokenKey, {
       expiresIn: tokenExpiresIn,
     });
+  }
+
+  public static decodeToken(token: string): DecodedUser {
+    return jwt.verify(token, tokenKey) as DecodedUser;
   }
 }
