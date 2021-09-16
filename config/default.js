@@ -8,6 +8,10 @@ module.exports = {
     database: {
       mongoUrl: 'mongodb://localhost:27017/forecast',
     },
+    auth: {
+      key: 'some-key',
+      tokenExpiresIn: '2000000000000',
+    },
     resources: {
       StormGlass: {
         apiUrl: 'https://api.stormglass.io/v2',

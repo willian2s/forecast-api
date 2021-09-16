@@ -1,4 +1,10 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import config from 'config';
+import { User } from '@src/models/user';
+
+const tokenKey: string = config.get('App.auth.key');
+const tokenExpiresIn: number = config.get('App.auth.tokenExpiresIn');
 
 export default class AuthService {
   public static async hashPassword(
@@ -13,5 +19,11 @@ export default class AuthService {
     hashedPassword: string
   ): Promise<boolean> {
     return await bcrypt.compare(password, hashedPassword);
+  }
+
+  public static generateToken(payload: User): string {
+    return jwt.sign(payload, tokenKey, {
+      expiresIn: tokenExpiresIn,
+    });
   }
 }
