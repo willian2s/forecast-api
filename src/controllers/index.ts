@@ -7,7 +7,6 @@ export abstract class BaseController {
     error: mongoose.Error.ValidationError | Error
   ): void {
     if (error instanceof mongoose.Error.ValidationError) {
-      console.log(error.stack);
       res.status(422).send({ code: 422, error: error.message });
     } else {
       res.status(500).send({ code: 500, error: 'Something went wrong!' });
