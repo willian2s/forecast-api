@@ -20,14 +20,14 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/src/index.js",
-    "start:dev": "ts-node-dev --transpile-only 'src/index.ts' | pino-pretty -c",
+    "start:dev": "dotenv -e .env -- ts-node-dev --transpile-only 'src/index.ts' | pino-pretty -c",
     "lint": "eslint ./src ./test --ext .ts",
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
     "style:check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
     "style:fix": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
     "test": "yarn lint && yarn style:check && yarn test:unit && yarn test:functional",
-    "test:unit": "jest",
-    "test:functional": "jest --projects ./test --runInBand",
+    "test:unit": "dotenv -e .env.test -- jest",
+    "test:functional": "dotenv -e .env.test -- jest --projects ./test --runInBand",
     "test:cov": "jest --coverage"
   },
   "devDependencies": {
@@ -52,6 +52,7 @@
     "@types/swagger-ui-express": "^4.1.3",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
+    "dotenv-cli": "^4.0.0",
     "eslint": "^7.32.0",
     "jest": "^27.1.0",
     "nock": "^13.1.3",
