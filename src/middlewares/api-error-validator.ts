@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response, NextFunction } from 'express';
-import ApiError from '@src/utils/errors/api-error';
+import ApiError from '@src/util/errors/api-error';
 
 export interface HTTPError extends Error {
   status?: number;

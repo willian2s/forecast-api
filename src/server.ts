@@ -1,4 +1,4 @@
-import './utils/module-alias';
+import './util/module-alias';
 import { Server } from '@overnightjs/core';
 import express, { Application } from 'express';
 import expressPino from 'express-pino-logger';

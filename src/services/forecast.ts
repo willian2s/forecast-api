@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { StormGlass, ForecastPoint } from '@src/clients/stormGlass';
 import logger from '@src/logger';
 import { Beach } from '@src/models/beach';
-import { InternalError } from '@src/utils/errors/internal-error';
+import { InternalError } from '@src/util/errors/internal-error';
 import { Rating } from './rating';
 
 export interface BeachForecast extends Omit<Beach, 'userId'>, ForecastPoint {}

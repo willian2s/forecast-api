@@ -1,8 +1,8 @@
 import config, { IConfig } from 'config';
-import * as HTTPUtil from '@src/utils/request';
-import { InternalError } from '@src/utils/errors/internal-error';
-import { TimeUtil } from '@src/utils/time';
-import CacheUtil from '@src/utils/cache';
+import * as HTTPUtil from '@src/util/request';
+import { InternalError } from '@src/util/errors/internal-error';
+import { TimeUtil } from '@src/util/time';
+import CacheUtil from '@src/util/cache';
 import logger from '@src/logger';
 
 export interface StormGlassPointSource {

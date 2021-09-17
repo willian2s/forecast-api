@@ -1,5 +1,5 @@
 import logger from '@src/logger';
-import ApiError, { APIError } from '@src/utils/errors/api-error';
+import ApiError, { APIError } from '@src/util/errors/api-error';
 import { Response } from 'express';
 import mongoose from 'mongoose';
 

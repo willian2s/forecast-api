@@ -1,11 +1,11 @@
-import * as HTTPUtil from '@src/utils/request';
+import * as HTTPUtil from '@src/util/request';
 import { StormGlass } from '@src/clients/stormGlass';
 import stormglassWeatherPointFixture from '@test/fixtures/stormglass_weather_3_hours.json';
 import stormGlassNormalizedResponseFixture from '@test/fixtures/stormglass_normalized_response_3_hours.json';
-import CacheUtil from '@src/utils/cache';
+import CacheUtil from '@src/util/cache';
 
-jest.mock('@src/utils/request');
-jest.mock('@src/utils/cache');
+jest.mock('@src/util/request');
+jest.mock('@src/util/cache');
 
 describe('StormGlass client', () => {
   const MockedRequestClass = HTTPUtil.Request as jest.Mocked<

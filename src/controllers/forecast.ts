@@ -10,7 +10,7 @@ import { Forecast } from '@src/services/forecast';
 import { Beach } from '@src/models/beach';
 import { authMiddleware } from '@src/middlewares/auth';
 import { BaseController } from '.';
-import ApiError from '@src/utils/errors/api-error';
+import ApiError from '@src/util/errors/api-error';
 
 const forecast = new Forecast();
 const rateLimiter = rateLimit({
