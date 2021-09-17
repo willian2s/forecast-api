@@ -33,7 +33,7 @@ describe('Beaches functional tests', () => {
       expect(response.body).toEqual(expect.objectContaining(newBeach));
     });
 
-    it('Return 422 when there is a validation error', async () => {
+    it('Return 400 when there is a validation error', async () => {
       const newBeach = {
         lat: 'invalid_string',
         lng: 151.289824,
@@ -44,9 +44,11 @@ describe('Beaches functional tests', () => {
         .post('/beaches')
         .set({ 'x-access-token': token })
         .send(newBeach);
-      expect(response.status).toBe(422);
+      expect(response.status).toBe(400);
       expect(response.body).toEqual({
-        error:
+        code: 400,
+        error: 'Bad Request',
+        message:
           'Beach validation failed: lat: Cast to Number failed for value "invalid_string" (type string) at path "lat"',
       });
     });
@@ -68,7 +70,9 @@ describe('Beaches functional tests', () => {
         .send(newBeach);
       expect(response.status).toBe(500);
       expect(response.body).toEqual({
+        code: 500,
         error: 'Internal Server Error',
+        message: 'Something went wrong!',
       });
     });
   });
