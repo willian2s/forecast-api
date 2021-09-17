@@ -20,10 +20,10 @@ const { ObjectId } = Schema.Types;
 
 const schema = new mongoose.Schema(
   {
-    lat: { type: Number, require: true },
-    lng: { type: Number, require: true },
-    name: { type: String, require: true },
-    position: { type: String, require: true },
+    lat: { type: Number, required: true },
+    lng: { type: Number, required: true },
+    name: { type: String, required: true },
+    position: { type: String, required: true },
     user: { type: ObjectId, ref: 'User', required: true },
   },
   {
