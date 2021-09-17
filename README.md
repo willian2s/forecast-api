@@ -55,6 +55,8 @@ This project was developed with the following technologies:
 
 This API was developed to obtain the forecast of the beaches where you want to surf. Being able to give your rating for each visited beach.
 
+📓 [Access a documentation:](https://forecast-surf-api.herokuapp.com/doc/)
+
 ## How to test
 
 - Clone the repository: `git clone https://github.com/willian2s/vuttr.git`

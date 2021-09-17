@@ -6,7 +6,7 @@ import cors from 'cors';
 import SwaggerUi from 'swagger-ui-express';
 import * as OpenApiValidator from 'express-openapi-validator';
 import { OpenAPIV3 } from 'express-openapi-validator/dist/framework/types';
-import apiSchema from './api.schema.json';
+import apiSchema from '@src/doc/api.schema.json';
 import * as database from '@src/database';
 import { ForcastController } from '@src/controllers/forecast';
 import { BeachesController } from '@src/controllers/beaches';
@@ -57,7 +57,7 @@ export class SetupServer extends Server {
   }
 
   private docsSetup(): void {
-    this.app.use('/docs', SwaggerUi.serve, SwaggerUi.setup(apiSchema));
+    this.app.use('/doc', SwaggerUi.serve, SwaggerUi.setup(apiSchema));
     OpenApiValidator.middleware({
       apiSpec: apiSchema as OpenAPIV3.Document,
       validateRequests: true,
