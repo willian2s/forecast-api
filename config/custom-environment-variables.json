@@ -10,7 +10,8 @@
     "resources": {
       "stormGlass": {
         "apiUrl": "STORM_GLASS_API_URL",
-        "apiToken": "STORM_GLASS_API_TOKEN"
+        "apiToken": "STORM_GLASS_API_TOKEN",
+        "cacheTtl": "STORM_GLASS_API_CACHE_TTL"
       }
     }
   }
