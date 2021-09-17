@@ -19,68 +19,6 @@ const waveHeights = {
 export class Rating {
   constructor(private beach: Beach) {}
 
-  public getRatingBasedOnWindAndWavePositions(
-    wavePosition: GeoPosition,
-    windPosition: GeoPosition
-  ): number {
-    if (wavePosition === windPosition) {
-      return 1;
-    }
-    if (this.isWindOffshore(wavePosition, windPosition)) {
-      return 5;
-    }
-    return 3;
-  }
-
-  public getRatingForSwellPeriod(period: number): number {
-    if (period >= 7 && period < 10) {
-      return 2;
-    }
-    if (period >= 10 && period < 14) {
-      return 4;
-    }
-    if (period >= 14) {
-      return 5;
-    }
-    return 1;
-  }
-
-  public getRatingForSwellSize(height: number): number {
-    if (
-      height >= waveHeights.ankleToKnee.min &&
-      height < waveHeights.ankleToKnee.max
-    ) {
-      return 2;
-    }
-    if (
-      height >= waveHeights.waistHigh.min &&
-      height < waveHeights.waistHigh.max
-    ) {
-      return 3;
-    }
-    if (height >= waveHeights.headHigh.min) {
-      return 5;
-    }
-
-    return 1;
-  }
-
-  public getPositionFromLocation(coordinates: number): GeoPosition {
-    if (coordinates >= 310 || (coordinates < 50 && coordinates >= 0)) {
-      return GeoPosition.N;
-    }
-    if (coordinates >= 50 && coordinates < 120) {
-      return GeoPosition.E;
-    }
-    if (coordinates >= 120 && coordinates < 220) {
-      return GeoPosition.S;
-    }
-    if (coordinates >= 220 && coordinates < 310) {
-      return GeoPosition.W;
-    }
-    return GeoPosition.E;
-  }
-
   public getRateForPoint(point: ForecastPoint): number {
     const swellDirection = this.getPositionFromLocation(point.swellDirection);
     const windDirection = this.getPositionFromLocation(point.windDirection);
@@ -95,23 +33,57 @@ export class Rating {
     return Math.round(finalRating);
   }
 
-  private isWindOffshore(
-    wavePosition: GeoPosition,
-    windPosition: GeoPosition
+  public getRatingBasedOnWindAndWavePositions(
+    waveDirection: GeoPosition,
+    windDirection: GeoPosition
+  ): number {
+    if (waveDirection === windDirection) {
+      return 1;
+    } else if (this.isWindOffShore(waveDirection, windDirection)) {
+      return 5;
+    }
+    return 3;
+  }
+
+  private isWindOffShore(
+    waveDirection: string,
+    windDirection: string
   ): boolean {
     return (
-      (wavePosition === GeoPosition.N &&
-        windPosition === GeoPosition.S &&
+      (waveDirection === GeoPosition.N &&
+        windDirection === GeoPosition.S &&
         this.beach.position === GeoPosition.N) ||
-      (wavePosition === GeoPosition.S &&
-        windPosition === GeoPosition.N &&
+      (waveDirection === GeoPosition.S &&
+        windDirection === GeoPosition.N &&
         this.beach.position === GeoPosition.S) ||
-      (wavePosition === GeoPosition.E &&
-        windPosition === GeoPosition.W &&
+      (waveDirection === GeoPosition.E &&
+        windDirection === GeoPosition.W &&
         this.beach.position === GeoPosition.E) ||
-      (wavePosition === GeoPosition.W &&
-        windPosition === GeoPosition.E &&
+      (waveDirection === GeoPosition.W &&
+        windDirection === GeoPosition.E &&
         this.beach.position === GeoPosition.W)
     );
+  }
+
+  public getRatingForSwellPeriod(period: number): number {
+    if (period < 7) return 1;
+    if (period < 10) return 2;
+    if (period < 14) return 4;
+    return 5;
+  }
+
+  public getRatingForSwellSize(height: number): number {
+    if (height < waveHeights.ankleToKnee.min) return 1;
+    if (height < waveHeights.ankleToKnee.max) return 2;
+    if (height < waveHeights.waistHigh.max) return 3;
+    return 5;
+  }
+
+  public getPositionFromLocation(coordinates: number): GeoPosition {
+    if (coordinates < 50) return GeoPosition.N;
+    if (coordinates < 120) return GeoPosition.E;
+    if (coordinates < 220) return GeoPosition.S;
+    if (coordinates < 310) return GeoPosition.W;
+    return GeoPosition.N;
   }
 }

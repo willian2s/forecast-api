@@ -5,7 +5,7 @@ import { Beach } from '@src/models/beach';
 import { InternalError } from '@src/utils/errors/internal-error';
 import { Rating } from './rating';
 
-export interface BeachForecast extends Omit<Beach, 'user'>, ForecastPoint {}
+export interface BeachForecast extends Omit<Beach, 'userId'>, ForecastPoint {}
 
 export interface TimeForecast {
   time: string;
