@@ -1,13 +1,12 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import config from 'config';
-import { User } from '@src/models/user';
 
 const tokenKey: string = config.get('App.auth.key');
 const tokenExpiresIn: number = config.get('App.auth.tokenExpiresIn');
 
-export interface DecodedUser extends Omit<User, '_id'> {
-  id: string;
+export interface JwtToken {
+  sub: string;
 }
 
 export default class AuthService {
@@ -25,13 +24,13 @@ export default class AuthService {
     return await bcrypt.compare(password, hashedPassword);
   }
 
-  public static generateToken(payload: User): string {
-    return jwt.sign(payload, tokenKey, {
+  public static generateToken(sub: string): string {
+    return jwt.sign({ sub }, tokenKey, {
       expiresIn: tokenExpiresIn,
     });
   }
 
-  public static decodeToken(token: string): DecodedUser {
-    return jwt.verify(token, tokenKey) as DecodedUser;
+  public static decodeToken(token: string): JwtToken {
+    return jwt.verify(token, tokenKey) as JwtToken;
   }
 }
